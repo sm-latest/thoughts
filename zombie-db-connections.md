@@ -20,8 +20,8 @@ and everything went back to normal. This is far from ideal.
 While rapid recovery isn’t a new concept I hadn’t heard of it. I only discovered it while investigating our incident. It turns out Hikari has a 
 [brilliant page dedicated to it](https://github.com/brettwooldridge/HikariCP/wiki/Rapid-Recovery).Their advice is two fold:
 
-- Ensure you don’t cache DNS for too long. The JVM default is indefinite for security reasons, but this didn’t age well with the advent of cloud computing. We changed the default such that any Guardian server with a JVM should only cache DNS for 60s. You can see how Max and Roberto implemented that change for our whole department here.
-- Ensure you set a TCP timeout. Some drivers support it, some don’t. PostgreSQL supports it but sets it to unlimited by default. So by default connections that have been dropped might never be closed.
+- Ensure you <b>don’t cache DNS for too long</b>. The JVM default is indefinite for security reasons, but this didn’t age well with the advent of cloud computing. We changed the default such that any Guardian server with a JVM should only cache DNS for 60s. You can see how Max and Roberto implemented that change for our whole department here.
+- Ensure you set a <b>TCP timeout</b>. Some drivers support it, some don’t. PostgreSQL supports it but sets it to unlimited by default. So by default connections that have been dropped might never be closed.
 
 ### Reference
 [Faster PostgresSQL Failover Recovery](https://www.theguardian.com/info/2019/dec/02/faster-postgresql-connection-recovery)
